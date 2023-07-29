@@ -1,5 +1,6 @@
 package com.example.mobile.landingPage
 import android.content.res.Configuration
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -40,7 +41,7 @@ fun Title(text: String) {
         text = text,
         modifier = Modifier.padding(16.dp),
         style = MaterialTheme.typography.subtitle2,
-        color = colorResource(id = R.color.purple_500),
+        color = MaterialTheme.colors.primary,
         fontSize = 30.sp
     )
 }
@@ -51,7 +52,7 @@ fun Description(text: String) {
         text = text,
         modifier = Modifier.padding(16.dp),
         style = MaterialTheme.typography.subtitle2,
-        color = colorResource(id = R.color.teal_200),
+        color = MaterialTheme.colors.onSecondary,
     )
 }
 
@@ -60,7 +61,9 @@ fun Landing() {
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.verticalScroll(rememberScrollState())
+        modifier = Modifier
+            .verticalScroll(rememberScrollState())
+            .background(MaterialTheme.colors.background)
     ) {
         Description(text = stringResource(R.string.sushi_story_intro))
         Title(text = stringResource(R.string.sushi_origin))
