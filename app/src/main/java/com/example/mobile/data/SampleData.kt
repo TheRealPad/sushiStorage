@@ -5,7 +5,7 @@ import com.example.mobile.R
 
 object SampleData {
     // Sample conversation data
-    val conversationSample = listOf(
+    val sushiSample = listOf(
         Sushi(
             "Maguro nigiri sushi",
             "Maguro nigiri sushi is a traditional Japanese type of nigiri sushi. It consists of hand-pressed sushi rice that's topped with slices of tuna. Different cuts of tuna are classified as otoro (fatty), chutoro (medium-fatty), and akami (red meat).\n" +

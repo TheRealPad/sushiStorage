@@ -1,6 +1,8 @@
+import android.content.res.Configuration
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -13,14 +15,35 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mobile.R
 import com.example.mobile.dto.Sushi
+import com.example.mobile.ui.theme.MobileTheme
 import com.example.mobile.utils.FavoriteStore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+
+@Preview(name = "Light Mode")
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showBackground = true,
+    name = "Dark Mode"
+)
+@Composable
+fun PreviewSushiCard() {
+    MobileTheme {
+        Surface {
+            SushiCard(
+                sushi = Sushi("Pad", "Le sushi de pad", R.drawable.icon_sushi),
+                FavoriteStore(LocalContext.current)
+            )
+        }
+    }
+}
 
 @Composable
 fun SushiCard(sushi: Sushi, store: FavoriteStore) {
@@ -81,6 +104,7 @@ fun FavoriteSushi(name: String, store: FavoriteStore) {
         }
     }
 }
+
 
 @Composable
 fun SushiData(name: String, description: String) {
