@@ -56,7 +56,7 @@ fun App() {
             Scaffold(
                 topBar = { TopBar()},
                 bottomBar = { BottomBar(selectedPage, setSelectedPage) }
-            ) { _ ->
+            ) { padding ->
                 Column(modifier = Modifier.padding(bottom = 100.dp)) {
                     if (selectedPage == Pages.SushiList) SushiList(SampleData.sushiSample, store)
                     else if (selectedPage == Pages.Create) CreationPage()

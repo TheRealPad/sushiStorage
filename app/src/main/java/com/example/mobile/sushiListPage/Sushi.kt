@@ -26,6 +26,7 @@ import com.example.mobile.utils.FavoriteStore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
 
 @Preview(name = "Light Mode")
 @Preview(
@@ -38,7 +39,7 @@ fun PreviewSushiCard() {
     MobileTheme {
         Surface {
             SushiCard(
-                sushi = Sushi("Pad", "Le sushi de pad", R.drawable.icon_sushi),
+                sushi = Sushi(UUID.randomUUID(),"Pad", "Le sushi de pad", R.drawable.icon_sushi),
                 FavoriteStore(LocalContext.current)
             )
         }
@@ -51,7 +52,7 @@ fun SushiCard(sushi: Sushi, store: FavoriteStore) {
         SushiIcon(icon = sushi.iconId)
         Spacer(modifier = Modifier.width(8.dp))
         SushiData(name = sushi.name, description = sushi.description)
-        FavoriteSushi(sushi.name, store)
+        FavoriteSushi(sushi.uuid.toString(), store)
     }
 }
 
@@ -74,12 +75,12 @@ fun setFavoriteSushi(name: String, store: FavoriteStore) {
 }
 
 @Composable
-fun FavoriteSushi(name: String, store: FavoriteStore) {
+fun FavoriteSushi(uuid: String, store: FavoriteStore) {
     val list = store.getFavorites.collectAsState(initial = "")
-    var isFavorite by remember { mutableStateOf(list.value.contains(name)) }
+    var isFavorite by remember { mutableStateOf(list.value.contains(uuid)) }
     val iconFavorite = if (isFavorite) R.drawable.favorite_selected else R.drawable.favorite_unselected
 
-    isFavorite = list.value.contains(name)
+    isFavorite = list.value.contains(uuid)
     Box(modifier = Modifier
         .fillMaxWidth()
         .padding(8.dp)) {
@@ -91,9 +92,9 @@ fun FavoriteSushi(name: String, store: FavoriteStore) {
                 }
             ) {
                 if (isFavorite) {
-                    setFavoriteSushi(list.value.replace("$name,", ""), store)
+                    setFavoriteSushi(list.value.replace("$uuid,", ""), store)
                 } else {
-                    setFavoriteSushi(list.value + "$name,", store)
+                    setFavoriteSushi(list.value + "$uuid,", store)
                 }
                 isFavorite = !isFavorite
             }

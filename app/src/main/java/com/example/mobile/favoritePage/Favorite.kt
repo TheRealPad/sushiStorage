@@ -19,8 +19,8 @@ import com.example.mobile.utils.FavoriteStore
 
 @Composable
 fun Favorite(favorites: String, store: FavoriteStore) {
-    val pad = favorites.split(",")
-    val sushis = SampleData.sushiSample.filter { sushi -> pad.any { p -> p == sushi.name } }
+    val favoriteSushi = favorites.split(",")
+    val sushis = SampleData.sushiSample.filter { sushi -> favoriteSushi.any { p -> p == sushi.uuid.toString() } }
     Column() {
         Text(text = stringResource(R.string.landing_page))
         LazyColumn {
