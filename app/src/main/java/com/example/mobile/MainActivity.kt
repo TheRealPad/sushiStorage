@@ -23,7 +23,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.mobile.creationPage.CreationPage
 import com.example.mobile.favoritePage.Favorite
+import com.example.mobile.ingredientList.IngredientListPage
 import com.example.mobile.landingPage.Landing
 import com.example.mobile.topBar.TopBar
 import com.example.mobile.utils.FavoriteStore
@@ -57,9 +59,9 @@ fun App() {
             ) { _ ->
                 Column(modifier = Modifier.padding(bottom = 100.dp)) {
                     if (selectedPage == Pages.SushiList) SushiList(SampleData.sushiSample, store)
-                    else if (selectedPage == Pages.Create) Text(text = "La page création est affichée")
+                    else if (selectedPage == Pages.Create) CreationPage()
                     else if (selectedPage == Pages.Favorites) Favorite(favorites = tokenText.value, store)
-                    else if (selectedPage == Pages.IngredientList) Text(text = "La page liste d'ingrédients est affichée")
+                    else if (selectedPage == Pages.IngredientList) IngredientListPage()
                     else Landing()
                 }
             }
