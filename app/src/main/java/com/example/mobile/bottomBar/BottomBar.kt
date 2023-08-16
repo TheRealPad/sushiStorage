@@ -20,21 +20,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import com.example.mobile.R
 import com.example.mobile.ui.theme.MobileTheme
-
-fun getWeight(selectedPage: Pages, page: Pages): Float {
-    if (selectedPage == page)
-        return 0.7f
-    return 0.5f
-}
-
-fun getIconSize(selectedPage: Pages, page: Pages): Dp {
-    if (selectedPage == page)
-        return 70.dp
-    return 20.dp
-}
 
 @Preview(name = "Light Mode")
 @Preview(
@@ -53,6 +40,13 @@ fun PreviewBottomBar() {
 }
 
 @Composable
+fun getIconBackgroundColor(isSelected: Boolean): Color {
+    if (isSelected)
+        return Color.White
+    return MaterialTheme.colors.primary
+}
+
+@Composable
 fun BottomBar(selectedPage: Pages, changePage: (Pages) -> Unit) {
     Row(
         modifier = Modifier
@@ -64,7 +58,8 @@ fun BottomBar(selectedPage: Pages, changePage: (Pages) -> Unit) {
     ) {
         Box(
             modifier = Modifier
-                .weight(animateFloatAsState(getWeight(selectedPage, Pages.Landing)).value)
+                .weight(animateFloatAsState(0.5f).value)
+                .fillMaxHeight()
                 .fillMaxWidth()
                 .clickable(
                     indication = null,
@@ -73,16 +68,17 @@ fun BottomBar(selectedPage: Pages, changePage: (Pages) -> Unit) {
                     }
                 ) { changePage(Pages.Landing) }
                 .align(Alignment.CenterVertically)
-                .aspectRatio(1f)
-                .background(MaterialTheme.colors.primary, shape = CircleShape),
+                .padding(1.dp)
+                .background(getIconBackgroundColor(isSelected = selectedPage ===Pages.Landing), shape = CircleShape),
             contentAlignment = Alignment.Center
         ) {
             Image(painter = painterResource(R.drawable.home), contentDescription = null, modifier = Modifier
-                .size(getIconSize(selectedPage, Pages.Landing)))
+                .size(40.dp))
         }
         Box(
             modifier = Modifier
-                .weight(animateFloatAsState(getWeight(selectedPage, Pages.SushiList)).value)
+                .weight(animateFloatAsState(0.5f).value)
+                .fillMaxHeight()
                 .fillMaxWidth()
                 .clickable(
                     indication = null,
@@ -91,16 +87,17 @@ fun BottomBar(selectedPage: Pages, changePage: (Pages) -> Unit) {
                     }
                 ) { changePage(Pages.SushiList) }
                 .align(Alignment.CenterVertically)
-                .aspectRatio(1f)
-                .background(MaterialTheme.colors.primary, shape = CircleShape),
+                .padding(1.dp)
+                .background(getIconBackgroundColor(isSelected = selectedPage ===Pages.SushiList), shape = CircleShape),
             contentAlignment = Alignment.Center
         ) {
             Image(painter = painterResource(R.drawable.menu_book), contentDescription = null, modifier = Modifier
-                .size(getIconSize(selectedPage, Pages.SushiList)))
+                .size(40.dp))
         }
         Box(
             modifier = Modifier
-                .weight(animateFloatAsState(getWeight(selectedPage, Pages.Create)).value)
+                .weight(animateFloatAsState(0.5f).value)
+                .fillMaxHeight()
                 .fillMaxWidth()
                 .clickable(
                     indication = null,
@@ -109,16 +106,17 @@ fun BottomBar(selectedPage: Pages, changePage: (Pages) -> Unit) {
                     }
                 ) { changePage(Pages.Create) }
                 .align(Alignment.CenterVertically)
-                .aspectRatio(1f)
-                .background(MaterialTheme.colors.primary, shape = CircleShape),
+                .padding(1.dp)
+                .background(getIconBackgroundColor(isSelected = selectedPage ===Pages.Create), shape = CircleShape),
             contentAlignment = Alignment.Center
         ) {
             Image(painter = painterResource(R.drawable.restaurant_menu), contentDescription = null, modifier = Modifier
-                .size(getIconSize(selectedPage, Pages.Create)))
+                .size(40.dp))
         }
         Box(
             modifier = Modifier
-                .weight(animateFloatAsState(getWeight(selectedPage, Pages.Favorites)).value)
+                .weight(animateFloatAsState(0.5f).value)
+                .fillMaxHeight()
                 .fillMaxWidth()
                 .clickable(
                     indication = null,
@@ -127,16 +125,17 @@ fun BottomBar(selectedPage: Pages, changePage: (Pages) -> Unit) {
                     }
                 ) { changePage(Pages.Favorites) }
                 .align(Alignment.CenterVertically)
-                .aspectRatio(1f)
-                .background(MaterialTheme.colors.primary, shape = CircleShape),
+                .padding(1.dp)
+                .background(getIconBackgroundColor(isSelected = selectedPage ===Pages.Favorites), shape = CircleShape),
             contentAlignment = Alignment.Center
         ) {
             Image(painter = painterResource(R.drawable.favorite_selected), contentDescription = null, modifier = Modifier
-                .size(getIconSize(selectedPage, Pages.Favorites)))
+                .size(40.dp))
         }
         Box(
             modifier = Modifier
-                .weight(animateFloatAsState(getWeight(selectedPage, Pages.IngredientList)).value)
+                .weight(animateFloatAsState(0.5f).value)
+                .fillMaxHeight()
                 .fillMaxWidth()
                 .clickable(
                     indication = null,
@@ -145,12 +144,12 @@ fun BottomBar(selectedPage: Pages, changePage: (Pages) -> Unit) {
                     }
                 ) { changePage(Pages.IngredientList) }
                 .align(Alignment.CenterVertically)
-                .aspectRatio(1f)
-                .background(MaterialTheme.colors.primary, shape = CircleShape),
+                .padding(1.dp)
+                .background(getIconBackgroundColor(isSelected = selectedPage ===Pages.IngredientList), shape = CircleShape),
             contentAlignment = Alignment.Center
         ) {
             Image(painter = painterResource(R.drawable.set_meal), contentDescription = null, modifier = Modifier
-                .size(getIconSize(selectedPage, Pages.IngredientList)))
+                .size(40.dp))
         }
     }
 }
