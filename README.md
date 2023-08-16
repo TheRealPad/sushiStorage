@@ -2,6 +2,10 @@
 
 Sushi app code in Kotlin woth jetpack compose, the objectiv of this app is to centralise every type of sushis in the world and let the user discover new flavour
 
+## get the apk
+
+You can find the apk in the last app release
+
 ## install apk
 ```bash
 ./createAPK.sh # the apk will be in apk/
