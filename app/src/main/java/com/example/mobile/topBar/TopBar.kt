@@ -20,7 +20,8 @@ import com.example.mobile.R
 @Preview(
     uiMode = Configuration.UI_MODE_NIGHT_YES,
     showBackground = true,
-    name = "Dark Mode"
+    name = "Dark Mode",
+    locale = "en"
 )
 @Composable
 fun PreviewTopBar() {

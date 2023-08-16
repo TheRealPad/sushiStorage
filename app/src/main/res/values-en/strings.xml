@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Sushi Storage</string>
+    <string name="landing_page">The favorite page is displayed</string>
+    <string name="sushi_story_intro">For more than 1500 years, Asia has been a continent where fishing and rice cultivation have been very present. Confronted with the problem of preserving seafood, inhabitants began to use salt and rice, placing fish between layers of fermented rice.</string>
+    <string name="sushi_origin">The origins of sushi</string>
+    <string name="sushi_origin_description">The lactic acid created by this technique prevented the fish from spoiling, enabling it to be eaten several months after being caught, unlike rice, which was thrown away. It wasn\'t until the 7th century that the Japanese put an end to this wasteful practice and began to eat this cereal too. If sushi is known to be a purely Japanese invention, it\'s because China saw this method completely disappear in the course of the same century. In the 15th century, the inhabitants of Edo (Tokyo\'s former name) came up with the idea of adding rice vinegar to speed up the fermentation process.</string>
+    <string name="sushi_today_title">From sushi to restaurant</string>
+    <string name="sushi_today_content">The sushi we know today was invented in 1824 by Hanaya Yohei, a street vendor from Edo. His aim was to prepare sushi that could be eaten quickly, fast-food-style. So he handcrafted sushi from rice that had only been seasoned with vinegar, and added fresh fish. Success came quickly, both in the capital and throughout Japan. After the Second World War, sushi restaurants sprang up and quickly took the place of street sushi vendors. Sushi was quickly adopted and appreciated by Western cultures. Today, sushi is a trendy, healthier alternative to traditional fast food.</string>
+    <string name="title_ingredient_list">The ingredient list page is displayed</string>
+    <string name="title_creation_page">The creation page is displayed</string>
+</resources>
