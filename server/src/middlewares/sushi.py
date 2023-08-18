@@ -8,11 +8,11 @@ class SushiMiddleware(BaseHTTPMiddleware):
         self.secured_routers = secured_routers
 
     def dispatch(self, request, call_next):
-        if request.path in self.secured_routers:
-            print("middleware sushi")
+        if request.method == "GET":
+            return call_next(request)
+        if request.path in self.secured_routers and request.headers.get("admin") == "admin":
             return call_next(request)
         else:
-            return call_next(request)
-
-    def error_handler(self, error):
-        return jsonify({"error": str(error)})
+            error_response = jsonify({"message": "invalid credentials"})
+            error_response.status_code = 401
+            return error_response

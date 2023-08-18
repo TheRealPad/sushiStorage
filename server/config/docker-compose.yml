@@ -7,5 +7,11 @@ services:
       context: ../
     ports:
       - "8080:8080"
+    env_file:
+      - ../.env
     environment:
       - PORT=${SERVER_PORT}
+      - DATABASE_URL=${DATABASE_URL}
+      - DATABASE_USER=${DATABASE_USER}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_NAME=${DATABASE_NAME}

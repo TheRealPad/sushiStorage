@@ -1,6 +1,7 @@
-from database.connect.dataParser import DataParserInterface
 import mysql.connector
 from mysql.connector import errorcode
+
+from database.connect.dataParser import DataParserInterface
 from data.sushi import Sushi
 
 
@@ -58,13 +59,29 @@ class MySqlParser(DataParserInterface):
         self.close()
         return sushis
 
-    def remove_sushi(self):
-        pass
+    def remove_sushi(self, uuid: str):
+        self.connection()
+        cursor = self.cnx.cursor()
+        add_employee = ("DELETE FROM Sushi WHERE id = %s")
+        data_employee = (uuid,)
+        cursor.execute(add_employee, data_employee)
+        self.cnx.commit()
+        cursor.close()
+        self.close()
 
-    def update_sushi(self):
-        pass
+    def update_sushi(self, sushi: Sushi):
+        self.connection()
+        cursor = self.cnx.cursor()
+        add_employee = ("UPDATE Sushi "
+                        "SET name = %s, description = %s, imagePath = %s, ingredientList = %s "
+                        "WHERE id = %s")
+        data_employee = (sushi.name, sushi.description, sushi.image_path, sushi.ingredient_list, sushi.uuid)
+        cursor.execute(add_employee, data_employee)
+        self.cnx.commit()
+        cursor.close()
+        self.close()
 
-    def create_sushi(self, sushi):
+    def create_sushi(self, sushi: Sushi):
         self.connection()
         cursor = self.cnx.cursor()
         add_employee = ("INSERT INTO Sushi "

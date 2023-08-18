@@ -1,11 +1,12 @@
-from routes.sushi import SushiRoutes
-from middlewares.sushi import SushiMiddleware
+import os
 from flask import Flask
 from flask_http_middleware import MiddlewareManager
-import os
 from dotenv import load_dotenv
 from database.connect.mysql import MySqlParser
 from database.connect.dataParser import DataParserInterface
+
+from routes.sushi import SushiRoutes
+from middlewares.sushi import SushiMiddleware
 
 
 def init_routes(api: Flask, db: DataParserInterface):
