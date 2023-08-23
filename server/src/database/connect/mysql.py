@@ -12,17 +12,18 @@ class MySqlParser(DataParserInterface):
     database: str
     cnx: any
 
-    def __init__(self, user: str, password: str, host: str, database: str):
+    def __init__(self, user: str, password: str, host: str, database: str, port: str):
         self.user = user
         self.password = password
         self.database = database
         self.host = host
+        self.port = port
 
     def connection(self):
         try:
             self.cnx = mysql.connector.connect(user=self.user, password=self.password,
                                           host=self.host,
-                                          database=self.database)
+                                          database=self.database, port=self.port)
         except mysql.connector.Error as err:
             self.cnx = False
             if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:

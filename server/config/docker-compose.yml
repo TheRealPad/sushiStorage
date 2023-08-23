@@ -1,6 +1,18 @@
 version: '3'
 
 services:
+  db:
+    image: mysql:latest
+    container_name: sushi_db
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+      MYSQL_DATABASE: SushiStorage
+    volumes:
+      - "../src/database/init.sql:/docker-entrypoint-initdb.d/init.sql"
+    ports:
+      - "3307:3306"
+    networks:
+      - back-net
   server:
     container_name: sushi_api
     build:
@@ -9,9 +21,24 @@ services:
       - "8080:8080"
     env_file:
       - ../.env
+    command: sh -c "/wait && /sayhello"
     environment:
       - PORT=${SERVER_PORT}
-      - DATABASE_URL=${DATABASE_URL}
-      - DATABASE_USER=${DATABASE_USER}
-      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
-      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_URL=127.0.0.1
+      - DATABASE_USER=root
+      - DATABASE_NAME=SushiStorage
+      - DATABASE_HOST=db
+      - DATABASE_PASSWORD=
+      - DATABASE_PORT=3306
+      - WAIT_HOSTS=mysql:3307
+      - WAIT_HOSTS_TIMEOUT=300
+      - WAIT_SLEEP_INTERVAL=30
+      - WAIT_HOST_CONNECT_TIMEOUT=30
+    depends_on:
+      - db
+    networks:
+      - back-net
+
+networks:
+  back-net:
+    driver: bridge

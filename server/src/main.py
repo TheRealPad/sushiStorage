@@ -34,8 +34,10 @@ if __name__ == "__main__":
         user=os.getenv('DATABASE_USER'),
         password=os.getenv('DATABASE_PASSWORD'),
         host=os.getenv('DATABASE_URL'),
-        database=os.getenv('DATABASE_NAME')
+        database=os.getenv('DATABASE_NAME'),
+        port=os.getenv('DATABASE_PORT')
     )
+    database.get_all_sushi()
     app: Flask = Flask(__name__)
     init_api(app, database)
     api_port: str = os.getenv('PORT')
