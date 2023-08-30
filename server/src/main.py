@@ -31,14 +31,13 @@ def init_api(api: Flask, db: DataParserInterface):
 if __name__ == "__main__":
     load_dotenv()
     database = MySqlParser(
-        user=os.getenv('DATABASE_USER'),
-        password=os.getenv('DATABASE_PASSWORD'),
-        host=os.getenv('DATABASE_URL'),
-        database=os.getenv('DATABASE_NAME'),
-        port=os.getenv('DATABASE_PORT')
+        user=str(os.environ.get('DATABASE_USER')),
+        password=str(os.environ.get('DATABASE_PASSWORD')),
+        host=str(os.environ.get('DATABASE_URL')),
+        database=str(os.environ.get('DATABASE_NAME')),
+        port=str(os.environ.get('DATABASE_PORT'))
     )
-    database.get_all_sushi()
+    print(database.get_all_sushi())
     app: Flask = Flask(__name__)
     init_api(app, database)
-    api_port: str = os.getenv('PORT')
-    app.run(host='0.0.0.0', port=api_port if api_port else 8080, debug=True, use_reloader=False)
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
