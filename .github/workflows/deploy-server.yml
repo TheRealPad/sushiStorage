@@ -19,6 +19,7 @@ jobs:
           project_id: sushistorage
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
+          run: echo ${{ secrets.GCP_SA_KEY }}
 
       - name: Configure docker for GCP
         run: gcloud auth configure-docker
