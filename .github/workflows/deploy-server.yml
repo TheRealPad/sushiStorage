@@ -28,14 +28,14 @@ jobs:
         with:
           context: .
           push: true
-          tags: gcr.io/sushistorage/us-west1-docker.pkg.dev/sushistorage/cloud-run-source-deploy/server@sha256:0cfdad0739d2c8fba9255f9bd44b1d85da275626d795754e4677ce95a5cb668a:latest
+          tags: gcr.io/sushistorage/myapp:latest
           build-args: |
             HTTP_PORT=8080
 
       - name: Deploy to Cloud Run
         uses: google-github-actions/deploy-cloudrun@main
         with:
-          image: gcr.io/sushistorage/us-west1-docker.pkg.dev/sushistorage/cloud-run-source-deploy/server@sha256:0cfdad0739d2c8fba9255f9bd44b1d85da275626d795754e4677ce95a5cb668a:latest
+          image: gcr.io/sushistorage/myapp:latest
           service: server-sushi-storage-develop
           region: us-west1
           platform: managed
