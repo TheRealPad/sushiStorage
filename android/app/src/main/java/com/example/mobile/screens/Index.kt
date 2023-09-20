@@ -8,20 +8,20 @@ import androidx.compose.ui.graphics.Color
 @Composable
 fun screenA() {
     Column() {
-        Text("Screen A", color = Color.White)
+        Text("Tu", color = Color.White)
     }
 }
 
 @Composable
 fun screenB() {
     Column() {
-        Text("Screen B", color = Color.White)
+        Text("Es", color = Color.White)
     }
 }
 
 @Composable
 fun screenC() {
     Column() {
-        Text("Screen C", color = Color.White)
+        Text("Célibataire 🖕", color = Color.White)
     }
 }

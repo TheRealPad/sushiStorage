@@ -7,6 +7,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import com.example.mobile.utils.findClosestIndex
 import com.example.mobile.utils.generateScreenPositions
@@ -28,7 +30,10 @@ fun ScrollPage(screenList: List<@Composable () -> Unit>, indexDisplay: Int, setI
 private fun ScrollBoxes(screenList: List<@Composable () -> Unit>, indexDisplay: Int, setIndexDisplay: (Int) -> Unit) {
     val scrollState = rememberScrollState()
     val scope = rememberCoroutineScope()
-    val screenPositions = generateScreenPositions(screenList.size)
+    val configuration = LocalConfiguration.current
+    val density = LocalDensity.current.density
+    val screenWidth = (configuration.screenWidthDp * density).toInt()
+    val screenPositions = generateScreenPositions(screenList.size, screenWidth)
     val currentIndexDisplay by rememberUpdatedState(indexDisplay)
     Row(
         modifier = Modifier
@@ -38,7 +43,7 @@ private fun ScrollBoxes(screenList: List<@Composable () -> Unit>, indexDisplay: 
         repeat(screenList.size) { index ->
             val boxModifier = Modifier
                 .background(Color(0, 0, index * 100))
-                .width(410.dp)
+                .width(configuration.screenWidthDp.dp)
                 .fillMaxHeight()
 
             Box(
