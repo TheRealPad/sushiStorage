@@ -1,4 +1,4 @@
-package com.example.mobile.creationPage
+package com.example.mobile.screens.ingredientList
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -7,12 +7,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.mobile.R
 
 @Composable
-fun CreationPage() {
-    Text(text = stringResource(R.string.title_creation_page))
+fun IngredientListPage() {
+    Text(text = stringResource(R.string.title_ingredient_list))
 }
 
 @Preview
 @Composable
-fun PreviewCreationPage() {
-    CreationPage()
+fun PreviewIngredientList() {
+    IngredientListPage()
 }

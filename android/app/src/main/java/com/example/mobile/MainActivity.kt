@@ -1,7 +1,5 @@
 package com.example.mobile
 
-import Pages
-import SushiList
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -16,22 +14,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.remember
 import com.example.mobile.bottomBar.BottomBar
-import com.example.mobile.data.SampleData
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.example.mobile.creationPage.CreationPage
-import com.example.mobile.favoritePage.Favorite
-import com.example.mobile.ingredientList.IngredientListPage
-import com.example.mobile.landingPage.Landing
+import com.example.mobile.screens.screenA
+import com.example.mobile.screens.screenB
+import com.example.mobile.screens.screenC
+import com.example.mobile.screens.scrollPage.ScrollPage
 import com.example.mobile.topBar.TopBar
 import com.example.mobile.utils.FavoriteStore
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,22 +40,19 @@ fun App() {
     val context = LocalContext.current
     val store = FavoriteStore(context)
     val tokenText = store.getFavorites.collectAsState(initial = "")
+    val screenList: List<@Composable () -> Unit> = listOf({ screenA() }, { screenB() }, { screenC() })
     MobileTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background
         ) {
-            val (selectedPage, setSelectedPage) = remember { mutableStateOf(Pages.Landing) }
+            val (indexDisplay, setIndexDisplay) = remember { mutableStateOf(0) }
             Scaffold(
                 topBar = { TopBar()},
-                bottomBar = { BottomBar(selectedPage, setSelectedPage) }
+                bottomBar = { BottomBar(screenList.size, setIndexDisplay) }
             ) { padding ->
-                Column(modifier = Modifier.padding(bottom = 100.dp)) {
-                    if (selectedPage == Pages.SushiList) SushiList(SampleData.sushiSample, store)
-                    else if (selectedPage == Pages.Create) CreationPage()
-                    else if (selectedPage == Pages.Favorites) Favorite(favorites = tokenText.value, store)
-                    else if (selectedPage == Pages.IngredientList) IngredientListPage()
-                    else Landing()
+                Column(modifier = Modifier.padding(bottom = 70.dp)) {
+                    ScrollPage(screenList, indexDisplay, setIndexDisplay)
                 }
             }
         }

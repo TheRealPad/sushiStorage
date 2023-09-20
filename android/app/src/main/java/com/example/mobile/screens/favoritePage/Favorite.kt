@@ -1,4 +1,4 @@
-package com.example.mobile.favoritePage
+package com.example.mobile.screens.favoritePage
 
 import SushiCard
 import androidx.compose.foundation.background
