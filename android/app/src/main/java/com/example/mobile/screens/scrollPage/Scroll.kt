@@ -54,10 +54,13 @@ private fun ScrollBoxes(screenList: List<@Composable () -> Unit>, indexDisplay: 
             }
         }
     }
+    LaunchedEffect(Unit) {
+        scrollState.animateScrollTo(screenPositions[indexDisplay])
+    }
     LaunchedEffect(scrollState.isScrollInProgress) {
         if (!scrollState.isScrollInProgress) {
             val index = findClosestIndex(scrollState.value, screenPositions)
-            //setIndexDisplay(index)
+            /*setIndexDisplay(index)*/
             scope.launch { scrollState.animateScrollTo(screenPositions[index]) }
         }
     }

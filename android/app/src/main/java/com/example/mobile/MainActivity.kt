@@ -46,7 +46,7 @@ fun App() {
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background
         ) {
-            val (indexDisplay, setIndexDisplay) = remember { mutableStateOf(0) }
+            val (indexDisplay, setIndexDisplay) = remember { mutableStateOf(1) }
             Scaffold(
                 topBar = { TopBar()},
                 bottomBar = { BottomBar(screenList.size, setIndexDisplay) }
