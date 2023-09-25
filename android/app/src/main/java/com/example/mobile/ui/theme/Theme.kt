@@ -12,7 +12,12 @@ private val DarkColorPalette = darkColors(
     primary = Red,
     primaryVariant = Red,
     secondary = White,
-    onSecondary = Color.White
+    onSecondary = Color.White,
+    background = Color.White,
+    surface = Color.White,
+    onPrimary = Color.White,
+    onBackground = Color.Black,
+    onSurface = Color.Black,
 )
 
 private val LightColorPalette = lightColors(
@@ -20,14 +25,11 @@ private val LightColorPalette = lightColors(
     primaryVariant = Red,
     secondary = White,
     onSecondary = Color.Black,
-
-    /* Other default colors to override
     background = Color.White,
     surface = Color.White,
     onPrimary = Color.White,
     onBackground = Color.Black,
     onSurface = Color.Black,
-    */
 )
 
 @Composable

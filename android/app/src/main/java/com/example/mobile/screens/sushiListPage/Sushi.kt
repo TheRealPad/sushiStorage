@@ -15,14 +15,19 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mobile.R
 import com.example.mobile.dto.Sushi
+import com.example.mobile.ui.theme.DarkGrey
 import com.example.mobile.ui.theme.LightGrey
 import com.example.mobile.ui.theme.MobileTheme
+import com.example.mobile.ui.theme.Red
 import com.example.mobile.utils.FavoriteStore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -51,13 +56,19 @@ fun PreviewSushiCard() {
 fun SushiCard(sushi: Sushi, store: FavoriteStore) {
     Row(
         modifier = Modifier
-            .padding(all = 8.dp)
+            .clip(shape = RoundedCornerShape(10.dp))
             .background(color = LightGrey)
     ) {
-        SushiIcon(icon = sushi.iconId)
-        Spacer(modifier = Modifier.width(8.dp))
-        SushiData(name = sushi.name, description = sushi.description)
-        FavoriteSushi(sushi.uuid.toString(), store)
+        Row(
+            modifier = Modifier
+                .padding(16.dp)
+                .background(color = LightGrey)
+        ) {
+            SushiIcon(icon = sushi.iconId)
+            Spacer(modifier = Modifier.width(8.dp))
+            SushiData(name = sushi.name, description = sushi.description)
+            FavoriteSushi(sushi.uuid.toString(), store)
+        }
     }
 }
 
@@ -67,9 +78,10 @@ fun SushiIcon(icon: Int) {
         painter = painterResource(icon),
         contentDescription = null,
         modifier = Modifier
-            .size(40.dp)
+            .size(60.dp)
             .clip(RoundedCornerShape(10.dp))
-            .border(1.5.dp, MaterialTheme.colors.secondaryVariant, RoundedCornerShape(10.dp))
+            .border(1.5.dp, MaterialTheme.colors.onSurface, RoundedCornerShape(10.dp)),
+        contentScale = ContentScale.FillHeight
     )
 }
 
@@ -105,8 +117,8 @@ fun FavoriteSushi(uuid: String, store: FavoriteStore) {
             }
             .align(Alignment.CenterEnd)) {
             Image(painter = painterResource(iconFavorite), contentDescription = null, modifier = Modifier
-                .width(20.dp)
-                .height(20.dp))
+                .width(40.dp)
+                .height(40.dp))
         }
     }
 }
@@ -115,16 +127,14 @@ fun FavoriteSushi(uuid: String, store: FavoriteStore) {
 @Composable
 fun SushiData(name: String, description: String) {
     var isExpanded by remember { mutableStateOf(false) }
-    val surfaceColor by animateColorAsState(
-        if (isExpanded) MaterialTheme.colors.primary else MaterialTheme.colors.surface,
-    )
 
     Column(modifier = Modifier
         .widthIn(200.dp, 200.dp)) {
         Text(
             text = name,
-            color = MaterialTheme.colors.secondaryVariant,
-            style = MaterialTheme.typography.subtitle2
+            color = MaterialTheme.colors.primary,
+            style = MaterialTheme.typography.subtitle2,
+            fontWeight = FontWeight.Bold
         )
 
         Spacer(modifier = Modifier.height(4.dp))
@@ -132,17 +142,19 @@ fun SushiData(name: String, description: String) {
         Surface(
             shape = MaterialTheme.shapes.medium,
             elevation = 1.dp,
-            color = surfaceColor,
+            color = MaterialTheme.colors.surface,
             modifier = Modifier
                 .animateContentSize()
                 .padding(1.dp)
+                .width(400.dp)
                 .clickable { isExpanded = !isExpanded }
         ) {
             Text(
                 text = description,
                 modifier = Modifier.padding(all = 4.dp),
                 maxLines = if (isExpanded) Int.MAX_VALUE else 1,
-                style = MaterialTheme.typography.body2
+                style = MaterialTheme.typography.body2,
+                color = Color.Black
             )
         }
     }
