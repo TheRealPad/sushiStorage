@@ -1,5 +1,6 @@
 package com.example.mobile.topBar
 import android.content.res.Configuration
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
@@ -9,6 +10,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -43,11 +45,15 @@ fun TopBar() {
         horizontalArrangement = Arrangement.Start,
         verticalAlignment = Alignment.CenterVertically
     ) {
+        Box(modifier = Modifier.absolutePadding(right = 70.dp)) {
+            Image(painter = painterResource(id = R.drawable.sushi_top_bar), contentDescription = "")
+        }
         Text(
             text = stringResource(id = R.string.app_name),
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colors.onPrimary,
             fontSize = 22.sp
         )
+        Box() {}
     }
 }

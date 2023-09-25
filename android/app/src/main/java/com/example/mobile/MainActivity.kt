@@ -1,5 +1,6 @@
 package com.example.mobile
 
+import SushiList
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,14 +18,12 @@ import com.example.mobile.bottomBar.BottomBar
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.*
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.example.mobile.data.SampleData
 import com.example.mobile.screens.screenA
-import com.example.mobile.screens.screenB
 import com.example.mobile.screens.screenC
 import com.example.mobile.screens.scrollPage.ScrollPage
 import com.example.mobile.topBar.TopBar
-import com.example.mobile.utils.FavoriteStore
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,10 +36,11 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun App() {
-    val context = LocalContext.current
-    val store = FavoriteStore(context)
-    val tokenText = store.getFavorites.collectAsState(initial = "")
-    val screenList: List<@Composable () -> Unit> = listOf({ screenA() }, { screenB() }, { screenC() })
+    val screenList: List<@Composable () -> Unit> = listOf(
+        { screenA() },
+        { SushiList(sushis = SampleData.sushiSample) },
+        { screenC() }
+    )
     MobileTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),

@@ -21,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mobile.R
 import com.example.mobile.dto.Sushi
+import com.example.mobile.ui.theme.LightGrey
 import com.example.mobile.ui.theme.MobileTheme
 import com.example.mobile.utils.FavoriteStore
 import kotlinx.coroutines.CoroutineScope
@@ -48,7 +49,11 @@ fun PreviewSushiCard() {
 
 @Composable
 fun SushiCard(sushi: Sushi, store: FavoriteStore) {
-    Row(modifier = Modifier.padding(all = 8.dp)) {
+    Row(
+        modifier = Modifier
+            .padding(all = 8.dp)
+            .background(color = LightGrey)
+    ) {
         SushiIcon(icon = sushi.iconId)
         Spacer(modifier = Modifier.width(8.dp))
         SushiData(name = sushi.name, description = sushi.description)

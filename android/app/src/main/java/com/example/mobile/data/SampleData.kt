@@ -5,7 +5,6 @@ import com.example.mobile.R
 import java.util.*
 
 object SampleData {
-    // Sample conversation data
     val sushiSample = listOf(
         Sushi(
             UUID.randomUUID(),
@@ -77,6 +76,5 @@ object SampleData {
                     "The fish is sometimes seared with a blowtorch until lightly charred. Traditionally, this type of sushi is eaten by hand in a single bite. It's usually accompanied by soy sauce, wasabi, or pickled ginger (gari) on the side. The lower quality version of this dish is known as buri nigiri sushi, prepared with older and bigger yellowtail tuna.",
             R.drawable.icon_sushi
         ),
-
     )
 }
