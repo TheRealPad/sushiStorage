@@ -60,9 +60,9 @@ fun BottomBar(numberPage: Int, setIndexDisplay: (Int) -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally) {
             Box(modifier = Modifier
                 .padding(vertical = 5.dp)
+                .clip(shape = CircleShape)
                 .background(DarkGrey)
                 .width(100.dp)
-                .clip(shape = CircleShape)
                 .height(5.dp))
             Row(modifier =Modifier
                 .fillMaxWidth(),

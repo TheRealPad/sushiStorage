@@ -1,5 +1,4 @@
 import android.content.res.Configuration
-import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -23,11 +22,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mobile.R
-import com.example.mobile.dto.Sushi
-import com.example.mobile.ui.theme.DarkGrey
+import com.example.mobile.core.dto.Sushi
 import com.example.mobile.ui.theme.LightGrey
 import com.example.mobile.ui.theme.MobileTheme
-import com.example.mobile.ui.theme.Red
 import com.example.mobile.utils.FavoriteStore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

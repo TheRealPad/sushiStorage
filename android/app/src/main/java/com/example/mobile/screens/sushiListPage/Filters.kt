@@ -3,15 +3,15 @@ package com.example.mobile.screens.sushiListPage
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.mobile.R
 import com.example.mobile.ui.theme.DarkGrey
 import com.example.mobile.ui.theme.Grey
 
@@ -23,7 +23,7 @@ fun Filters(displayFavoriteSushi: Boolean, setDisplayFavoriteSushi: (Boolean) ->
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
     ) {
-        Text(text = "FAVORITES", color = MaterialTheme.colors.primary)
+        Text(text = stringResource(id = R.string.display_favorite_sushi), color = MaterialTheme.colors.primary, fontWeight = FontWeight.Bold)
         Switch(
             checked = displayFavoriteSushi,
             onCheckedChange = {

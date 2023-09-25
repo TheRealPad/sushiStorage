@@ -1,4 +1,4 @@
-package com.example.mobile.dto
+package com.example.mobile.core.dto
 
 import java.util.UUID
 

@@ -1,6 +1,6 @@
-package com.example.mobile.data
+package com.example.mobile.core.data
 
-import com.example.mobile.dto.Sushi
+import com.example.mobile.core.dto.Sushi
 import com.example.mobile.R
 import java.util.*
 

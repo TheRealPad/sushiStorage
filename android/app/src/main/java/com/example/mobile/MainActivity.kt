@@ -19,10 +19,10 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.unit.dp
-import com.example.mobile.data.SampleData
-import com.example.mobile.screens.screenA
-import com.example.mobile.screens.screenC
+import com.example.mobile.core.data.HandleSushi
 import com.example.mobile.screens.scrollPage.ScrollPage
+import com.example.mobile.screens.mapPage.Map
+import com.example.mobile.screens.tutoPage.Tuto
 import com.example.mobile.topBar.TopBar
 
 class MainActivity : ComponentActivity() {
@@ -36,10 +36,11 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun App() {
+    val handleSushi: HandleSushi = HandleSushi()
     val screenList: List<@Composable () -> Unit> = listOf(
-        { screenA() },
-        { SushiList(sushis = SampleData.sushiSample) },
-        { screenC() }
+        { Tuto() },
+        { SushiList(sushis = handleSushi.getSushiData()) },
+        { Map() }
     )
     MobileTheme {
         Surface(

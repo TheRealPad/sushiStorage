@@ -9,8 +9,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.mobile.data.SampleData
-import com.example.mobile.dto.Sushi
+import com.example.mobile.core.data.SampleData
+import com.example.mobile.core.dto.Sushi
 import com.example.mobile.screens.sushiListPage.Filters
 import com.example.mobile.utils.FavoriteStore
 

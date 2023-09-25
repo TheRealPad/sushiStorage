@@ -8,4 +8,8 @@
     <string name="sushi_today_content">Le sushi que l’on connaît aujourd’hui a été inventé en 1824 par Hanaya Yohei, un vendeur des rues d’Edo. Sa volonté fût de préparer des sushis qui pouvaient être rapidement mangés à la façon “fast-food”. Ainsi, il façonna à la main des sushis avec un riz seulement vinaigré et y ajouta du poisson frais. Le succès fut rapide dans la capitale comme dans tout le Japon. Au lendemain de la Seconde Guerre Mondiale, les restaurants de sushis se sont développés et ont très vite pris la place des vendeurs de sushis dans la rue.\n\nDepuis, les sushis ont rapidement été adopté et apprécié des cultures occidentales. Tendance, il est aujourd’hui une alternative plus saine aux traditionnels fast-foods.</string>
     <string name="title_ingredient_list">La page liste d\'ingrédients est affichée</string>
     <string name="title_creation_page">La page création est affichée</string>
+    <string name="display_favorite_sushi">FAVORIS</string>
+    <string name="how_to_cook_rice">Riz</string>
+    <string name="how_to_cook_fish">Poissons</string>
+    <string name="how_to_cook_sushi">Sushi</string>
 </resources>
